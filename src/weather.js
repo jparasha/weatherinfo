@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+//import ReactDOM from 'react-dom';
 import fetch  from 'node-fetch';
 //import Promise from 'es6-promise';
 //import './index.css';
@@ -16,6 +16,7 @@ class WeatherApp extends React.Component {
         temperature: undefined,
         humidity: undefined,
         wind: undefined,
+        message:undefined
       };
     };
     static defaultProps = {
@@ -51,6 +52,7 @@ class WeatherApp extends React.Component {
           temperature: data.main.temp,
           humidity: data.main.humidity,
           wind: data.wind.speed,
+          message:data.weather[0].description
         });
       })
       .catch( function() {
@@ -73,16 +75,21 @@ class WeatherApp extends React.Component {
         temperature, 
         humidity, 
         wind, 
+        message,
         infoStatus 
       } = this.state;
       let data = null;
       if (infoStatus === 'loaded') {
+        let inp= document.getElementById('input');
+          inp.value="";
+          inp.blur();
         data = <div className="weatherInfo">
             <div className="cityName">
               <div>{city} <span>({country})</span></div>
             </div>
             <div className="tempInfo">
               <div>Temperature<span>{temperature}º</span></div>
+              <div>Sky<span>{message}</span></div>
               <div>Humidity<span>{humidity}%</span></div>
               <div>Wind<span>{wind}m/s</span></div>
             </div>
@@ -99,6 +106,7 @@ class WeatherApp extends React.Component {
               <input 
                 type="text" 
                 name="search"
+                id= "input"
                 placeholder="Search a City..."
               />
             </form>

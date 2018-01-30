@@ -5,8 +5,11 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
+.weatherQuery{
+    margin-bottom: 5%;
+}
 .weatherApp {
-  padding-top: 4%;
+  padding-top: 5%;
 }
 .weatherApp .weatherQuery input {
   font-size: 20px;
@@ -44,13 +47,13 @@ body {
   flex-wrap: wrap;
 }
 .weatherApp .weatherInfo .tempInfo div {
-  font-size: 14px;
+  font-size: 18px;
   text-align: center;
   background: rgba(255, 255, 255, 0.3);
-  padding: 50px;
+  padding: 50px 60px;
   flex-grow: 1;
   min-width: 100px;
-  margin: 1% 10%;
+  margin: 1% 5%;
 }
 .weatherApp .weatherInfo .tempInfo div span {
   display: block;
